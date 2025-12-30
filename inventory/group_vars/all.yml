@@ -1,0 +1,5 @@
+---
+# Connection settings
+# Use 'local' for testing 
+ansible_connection: local
+
