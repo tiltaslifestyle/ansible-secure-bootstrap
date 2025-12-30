@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Ansible
+*.retry
+ansible.log
+.fact_cache/
+.cache/
+
+# Editor
+.vscode/
+.idea/
+*~
+*.swp
+
+# Secrets
+*.vault
+*.pem
+*.key
+id_rsa
+
+# Python
+__pycache__/
+*.pyc
