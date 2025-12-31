@@ -1,0 +1,41 @@
+---
+- name: Set timezone to UTC
+  timezone:
+    name: Etc/UTC
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install common utilities
+  apt:
+    name:
+      - curl
+      - wget
+      - git
+      - vim
+      - tree
+      - htop
+      - ncdu
+      - unzip
+      - zip
+      - net-tools
+      - dnsutils
+      - tcpdump
+      - jq 
+      - python3
+      - python3-pip
+      - python3-venv
+    state: present
+
+- name: Install Chrony
+  apt:
+    name: chrony
+    state: present
+
+- name: Ensure Chrony is started and enabled
+  service:
+    name: chrony
+    state: started
+    enabled: yes
