@@ -1,1 +1,13 @@
-#
+---
+- name: UFW - Allow SSH
+  ufw:
+    rule: allow
+    port: "{{ ssh_port | default('22') }}"
+    proto: tcp
+    direction: in
+
+- name: UFW - Enable firewall and logging
+  ufw:
+    state: enabled
+    policy: deny
+    logging: on

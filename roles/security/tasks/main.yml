@@ -2,7 +2,11 @@
 - name: Configure users
   import_tasks: users.yml
 
-- name: Configure SSH 
+- name: Configure SSH
   import_tasks: ssh.yml
 
+- name: Configure Firewall
+  import_tasks: firewall.yml
 
+- name: Configure Fail2Ban
+  import_tasks: fail2ban.yml
