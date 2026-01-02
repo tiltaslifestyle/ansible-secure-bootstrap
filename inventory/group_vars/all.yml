@@ -1,5 +1,11 @@
 ---
 # Connection settings
-# Use 'local' for testing 
-ansible_connection: local
+ansible_connection: local # for local testing only
+
+# Automation user that Ansible will create and manage
+automation_user: ansible
+
+# SSH key settings (paths are on the CONTROL NODE)
+ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+automation_user_ssh_public_key: ~/.ssh/id_ed25519.pub
 

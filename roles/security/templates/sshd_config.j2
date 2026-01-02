@@ -1,0 +1,35 @@
+# This is the sshd server system-wide configuration file.
+# See sshd_config(5) for more information.
+
+Include /etc/ssh/sshd_config.d/*.conf
+
+Port {{ ssh_port | default('22') }}
+
+# ===============================
+# Authentication
+# ===============================
+
+PubkeyAuthentication yes
+
+# SECURITY NOTE:
+# The following hardening options are intentionally commented out
+# to prevent SSH self-lockout during the initial bootstrap phase.
+#
+# Enable them ONLY AFTER verifying successful SSH key-based login
+# with the automation user.
+
+# PasswordAuthentication no
+# PermitRootLogin no
+# AllowUsers {{ automation_user }}
+
+# ===============================
+# PAM and session handling
+# ===============================
+
+UsePAM yes
+
+X11Forwarding yes
+PrintMotd no
+AcceptEnv LANG LC_*
+
+Subsystem sftp /usr/lib/openssh/sftp-server

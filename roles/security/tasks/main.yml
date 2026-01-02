@@ -1,1 +1,8 @@
-#
+---
+- name: Configure users
+  import_tasks: users.yml
+
+- name: Configure SSH 
+  import_tasks: ssh.yml
+
+

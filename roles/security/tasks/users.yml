@@ -1,0 +1,26 @@
+---
+- name: Create automation user
+  user:
+    name: "{{ automation_user }}"
+    comment: "Ansible automation user"
+    shell: /bin/bash
+    create_home: yes
+    groups: sudo
+    append: yes
+    state: present
+
+- name: Set authorized SSH keys for the automation user
+  authorized_key:
+    user: "{{ automation_user }}"
+    state: present
+    key: "{{ lookup('file', automation_user_ssh_public_key) }}"   
+
+- name: Allow passwordless sudo for automation user
+  copy:
+    dest: "/etc/sudoers.d/{{ automation_user }}"
+    content: "{{ automation_user }} ALL=(ALL) NOPASSWD:ALL\n"
+    owner: root
+    group: root
+    mode: '0440'
+    validate: 'visudo -cf %s'
+
