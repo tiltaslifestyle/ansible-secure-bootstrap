@@ -9,6 +9,18 @@
     append: yes
     state: present
 
+- name: Check if SSH public key exists
+  stat:
+    path: "{{ automation_user_ssh_public_key }}"
+  delegate_to: localhost
+  run_once: true
+  register: ssh_key_file
+  
+- name: Fail if SSH key not found
+  fail:
+    msg: "SSH public key not found at {{ automation_user_ssh_public_key }}"
+  when: not ssh_key_file.stat.exists
+
 - name: Set authorized SSH keys for the automation user
   authorized_key:
     user: "{{ automation_user }}"

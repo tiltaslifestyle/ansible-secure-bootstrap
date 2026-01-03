@@ -13,3 +13,9 @@
     group: root
     mode: '0644'
   notify: Restart Fail2Ban 
+
+- name: Ensure Fail2Ban is started and enabled
+  service:
+    name: fail2ban
+    state: started
+    enabled: yes
