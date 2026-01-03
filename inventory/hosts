@@ -1,2 +1,6 @@
-[servers]
-localhost
+[prod]
+prod-web-01 ansible_host=192.168.1.10
+prod-web-02 ansible_host=192.168.1.11
+
+[staging]
+staging-01 ansible_host=192.168.1.20

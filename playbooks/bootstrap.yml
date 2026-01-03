@@ -1,6 +1,6 @@
 ---
 - name: Prepare servers 
-  hosts: servers
+  hosts: staging # Options: staging, prod, all
   become: true
   
   roles:
